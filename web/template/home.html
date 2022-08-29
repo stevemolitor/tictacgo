@@ -1,0 +1,19 @@
+{{define "home"}}
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/stylesheets/styles.css" type="text/css" media="screen" />
+  </head>
+  <body>
+    <h1 class="title">Tic Tac Go!</h1>
+    <div class="welcome-container">
+      <div>
+        <p class="welcome-text">Welcome Tic Tac Toe Grandmaster! Please enter your user name:</p>
+        <form action="/" method="POST" class="welcome-form">
+          <input type="text" name="player" placeholder="name" pattern="^\S+$". required />
+          <input type="submit" value="Tic Tac Go!">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+{{end}}

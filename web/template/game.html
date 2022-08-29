@@ -1,0 +1,36 @@
+{{define "game"}}
+
+{{$gameNumber := .GameNumber}}
+{{$board := .Board}}
+{{$latency := .Latency}}
+{{$gameState := $board.GetGameState}}
+
+<div class="game" id="game-{{$gameNumber}}">
+  <div class="board">
+    {{range $i, $cell := $board}}
+    {{$disabled := $board.IsDisabled $i}}
+    <div class="cell {{if $disabled}}disabled{{end}} cell-waiting"
+         id="cell-{{$i}}"
+         {{if not $disabled}}
+         hx-put="./games/{{$gameNumber}}/cells/{{$i}}?latency={{$latency}}"
+         hx-swap="outerHTML"
+         hx-target="#game-{{$gameNumber}}"
+         {{end}}
+         >
+      <span class="cell-waiting">{{printf "%c" $cell}}</span>
+    </div>
+    {{end}}
+  </div>
+
+  <div class="game-state-label {{$gameState}}">
+    {{if (eq $gameState "x-win")}}
+    X Wins!
+    {{else if (eq $gameState "o-win")}}
+    O Wins :(
+    {{else if (eq $gameState "tie")}}
+    Tie
+    {{end}}
+  </div>
+</div>
+
+{{end}}

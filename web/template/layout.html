@@ -1,0 +1,23 @@
+{{define "layout"}}
+
+{{$latency := .Latency}}
+{{$numGames := .NumGames}}
+
+<html>
+  <head>
+    <script src="/static/scripts/htmx.min.js" defer></script>
+    <link rel="stylesheet" href="/static/stylesheets/styles.css" type="text/css" media="screen" />
+  </head>
+  <body>
+    <h1 class="title">Tic Tac Go!</h1>
+    {{ template "myGames" . }}
+    <button
+      class="reset-button"
+      hx-post="./reset?num-games={{$numGames}}&latency={{$latency}}"
+      hx-target=".my-games"
+      hx-swap="outerHTML">
+      Reset Games
+    </button>
+  </body>
+</html>
+{{end}}
