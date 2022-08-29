@@ -1,0 +1,10 @@
+{{define "myGames"}}
+<div class="my-games">
+  {{ range .Games }}
+  {{template "game" . }}
+  {{end}}
+</div>
+{{end}}
+
+    
+
