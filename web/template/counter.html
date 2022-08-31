@@ -1,0 +1,14 @@
+{{define "counter"}}
+
+{{$count := .Count}}
+
+<html>
+  <head>
+    <script src="/static/scripts/htmx.min.js" defer></script>
+  </head>
+  <body>
+    <div id="count">{{$count}}</div>
+    <button hx-post="/increment" hx-target="#count">Increment</button>
+  </body>
+</html>
+{{end}}
